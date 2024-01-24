@@ -15,4 +15,14 @@ module "vpc" {
   enable_dns_hostnames = true
 
   tags = local.tags
+
+  public_subnet_tags = {
+    "kubernetes.io/cluster/eks-task" = "shared"
+    "kubernetes.io/role/elb"         = "1"
+  }
+
+  private_subnet_tags = {
+    "kubernetes.io/cluster/eks-task"  = "shared"
+    "kubernetes.io/role/internal-elb" = "1"
+  }
 }
