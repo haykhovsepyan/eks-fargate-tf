@@ -24,7 +24,18 @@ module "eks-cluster" {
         },
         {
           namespace = "default"
-        }
+        },
+        {
+          namespace = "default"
+          labels = {
+            app = "app"
+          }
+        },
+
+        {
+          namespace = "kube-system"
+        },
+
       ]
       subnets = flatten([module.vpc.private_subnets])
     }
